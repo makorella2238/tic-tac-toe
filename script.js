@@ -39,7 +39,10 @@ function handleCellClick(e) {
     if (checkWin()) {
         updateScore();
         setTimeout(() => alert(`${currentPlayer} выиграл!`), 100);
-    } else if (gameBoard.every(cell => cell)) {
+        return;
+    }
+
+    if (gameBoard.every(cell => cell)) {
         setTimeout(() => alert('Ничья!'), 100);
     }
 
@@ -58,13 +61,12 @@ function checkWin() {
 function updateScore() {
     if (currentPlayer === 'X') {
         scoreX++;
-        scoreXDisplay.textContent = scoreX;
+        scoreXDisplay.textContent = `Победа X: ${scoreX}`;
     } else {
         scoreO++;
-        scoreODisplay.textContent = scoreO;
+        scoreODisplay.textContent = `Победа O: ${scoreO}`;
     }
 }
-
 function updateCurrentPlayerDisplay() {
     currentPlayerDisplay.textContent = `Ходит: ${currentPlayer}`;
 }
